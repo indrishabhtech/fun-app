@@ -5,29 +5,22 @@
 <title>App Lock</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="lock-screen">
 
 <div class="lock-card">
-  <h1>🔐 Secure App</h1>
-  <p>Enter PIN to continue</p>
-
-  <input type="password" id="pin" maxlength="4" placeholder="••••">
-  <button onclick="unlockApp()">Unlock</button>
-
-  <span id="error"></span>
+  <h2>Secure App</h2>
+  <input id="pin" type="password" placeholder="Enter PIN">
+  <button onclick="unlock()">Unlock</button>
+  <p id="err"></p>
 </div>
 
 <script>
-const DEFAULT_PIN = "1234";
-
-function unlockApp() {
-  const pin = document.getElementById("pin").value;
-  if (pin === DEFAULT_PIN) {
-    sessionStorage.setItem("unlocked", "yes");
+function unlock(){
+  if(document.getElementById("pin").value === "1234"){
+    localStorage.setItem("unlocked","true");
     location.replace("index.html");
   } else {
-    document.getElementById("error").innerText = "Wrong PIN";
+    err.innerText = "Wrong PIN";
   }
 }
 </script>
