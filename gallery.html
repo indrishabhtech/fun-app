@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gallery</title>
-  <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>Gallery</header>
 
-<div class="container">
-  <input type="file" accept="image/*" onchange="addImage(event)">
-  <input type="file" accept="image/*" capture="camera" onchange="addImage(event)">
-  <div id="gallery" class="gallery"></div>
+<div class="page">
+  <input id="imgTitle" placeholder="Image title">
+  <textarea id="imgDesc" placeholder="Image description"></textarea>
+
+  <input type="file" accept="image/*" capture onchange="addImage(event)">
+  
+  <div class="grid" id="gallery"></div>
 </div>
 
 <nav>
-  <button onclick="location.href='index.html'">Home</button>
+  <button onclick="go('index.html')">Home</button>
   <button class="active">Gallery</button>
 </nav>
 
