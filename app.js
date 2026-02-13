@@ -1,86 +1,71 @@
-/* ---------- GALLERY ---------- */
-let images = JSON.parse(localStorage.getItem("images") || "[]");
-
-function saveImages() {
-  localStorage.setItem("images", JSON.stringify(images));
+/* PROFILE */
+function saveProfile(){
+  localStorage.setItem("profile", JSON.stringify({
+    name: name.value,
+    role: role.value,
+    bio: bio.value
+  }));
 }
 
-function loadImages() {
-  const g = document.getElementById("gallery");
-  if (!g) return;
-  g.innerHTML = "";
-
-  images.forEach((img, i) => {
-    const d = document.createElement("div");
-    const im = document.createElement("img");
-    im.src = img;
-
-    const del = document.createElement("button");
-    del.textContent = "Delete";
-    del.className = "delete";
-    del.onclick = () => {
-      images.splice(i, 1);
-      saveImages();
-      loadImages();
-    };
-
-    d.append(im, del);
-    g.appendChild(d);
-  });
+const p = JSON.parse(localStorage.getItem("profile")||"{}");
+if (name) {
+  name.value = p.name || "";
+  role.value = p.role || "";
+  bio.value = p.bio || "";
 }
 
-function addImage(e) {
+/* GALLERY */
+let galleryData = JSON.parse(localStorage.getItem("gallery")||"[]");
+
+function addImage(e){
   const file = e.target.files[0];
   const reader = new FileReader();
   reader.onload = () => {
-    images.push(reader.result);
-    saveImages();
-    loadImages();
+    galleryData.push({
+      img: reader.result,
+      title: imgTitle.value,
+      desc: imgDesc.value
+    });
+    localStorage.setItem("gallery", JSON.stringify(galleryData));
+    renderGallery();
   };
   reader.readAsDataURL(file);
 }
 
-/* ---------- NOTES ---------- */
-let notes = JSON.parse(localStorage.getItem("notes") || "[]");
-
-function saveNotes() {
-  localStorage.setItem("notes", JSON.stringify(notes));
-}
-
-function loadNotes() {
-  const n = document.getElementById("notes");
-  if (!n) return;
-  n.innerHTML = "";
-
-  notes.forEach((note, i) => {
-    const d = document.createElement("div");
-    d.className = "note";
-    d.innerHTML = note;
-
-    const del = document.createElement("button");
-    del.textContent = "Delete";
-    del.className = "delete";
-    del.onclick = () => {
-      notes.splice(i, 1);
-      saveNotes();
-      loadNotes();
-    };
-
-    d.appendChild(del);
-    n.appendChild(d);
+function renderGallery(){
+  if(!gallery) return;
+  gallery.innerHTML="";
+  galleryData.forEach((g,i)=>{
+    gallery.innerHTML+=`
+      <div class="card">
+        <img src="${g.img}">
+        <div class="info">
+          <b>${g.title}</b>
+          <p>${g.desc}</p>
+          <button onclick="delImg(${i})">Delete</button>
+        </div>
+      </div>`;
   });
 }
+function delImg(i){
+  galleryData.splice(i,1);
+  localStorage.setItem("gallery",JSON.stringify(galleryData));
+  renderGallery();
+}
+renderGallery();
 
-function addNote() {
-  const t = document.getElementById("noteText");
-  if (!t.value) return;
-  notes.push(t.value);
-  t.value = "";
-  saveNotes();
+/* NOTES */
+let notes = JSON.parse(localStorage.getItem("notes")||"[]");
+function addNote(){
+  notes.push(noteText.value);
+  localStorage.setItem("notes",JSON.stringify(notes));
+  noteText.value="";
   loadNotes();
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  loadImages();
-  loadNotes();
-});
+function loadNotes(){
+  if(!notesDiv) return;
+  notesDiv.innerHTML="";
+  notes.forEach((n,i)=>{
+    notesDiv.innerHTML+=`<div class="card">${n}</div>`;
+  });
+}
