@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>Gallery</header>
+
+<div class="container">
+  <input type="file" accept="image/*" onchange="addImage(event)">
+  <input type="file" accept="image/*" capture="camera" onchange="addImage(event)">
+  <div id="gallery" class="gallery"></div>
+</div>
+
+<nav>
+  <button onclick="location.href='index.html'">Home</button>
+  <button class="active">Gallery</button>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>
