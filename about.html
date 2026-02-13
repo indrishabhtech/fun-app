@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>About</title>
-  <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>About Me</header>
+<header>My Profile</header>
 
-<div class="container">
-  <p>
-    This is my secured personal APK app.<br><br>
-    🔐 App Lock<br>
-    🖼️ Gallery<br>
-    📝 Notes<br>
-    📷 Camera Capture
-  </p>
+<div class="page">
+  <input id="name" placeholder="Your Name">
+  <input id="role" placeholder="Your Role">
+  <textarea id="bio" placeholder="Short bio..."></textarea>
+  <button onclick="saveProfile()">Save</button>
 </div>
 
 <nav>
-  <button onclick="location.href='index.html'">Home</button>
-  <button class="active">About</button>
+  <button onclick="go('index.html')">Home</button>
+  <button class="active">Profile</button>
 </nav>
 
+<script src="app.js"></script>
 </body>
 </html>
