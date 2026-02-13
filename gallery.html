@@ -5,18 +5,22 @@
 <title>Gallery</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header>Gallery</header>
 
 <div class="page">
-  <input id="imgTitle" placeholder="Image title">
-  <textarea id="imgDesc" placeholder="Image description"></textarea>
+  <input id="imgTitle" placeholder="Title">
+  <textarea id="imgDesc" placeholder="Description"></textarea>
 
-  <input type="file" accept="image/*" capture onchange="addImage(event)">
-  
+  <input type="file" accept="image/*" multiple onchange="addImages(event)">
+  <button onclick="saveGallery()">Save</button>
+
   <div class="grid" id="gallery"></div>
+</div>
+
+<div id="viewer" class="viewer" onclick="closeViewer()">
+  <img id="viewerImg">
 </div>
 
 <nav>
@@ -25,5 +29,8 @@
 </nav>
 
 <script src="app.js"></script>
+<script>
+function go(p){ location.href=p; }
+</script>
 </body>
 </html>
