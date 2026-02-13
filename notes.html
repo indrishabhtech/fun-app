@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Notes</title>
-  <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>Notes</header>
 
-<div class="container">
-  <textarea id="noteText" placeholder="Write your note..."></textarea>
-  <button onclick="addNote()">Save Note</button>
+<div class="page">
+  <textarea id="noteText" placeholder="Write note..."></textarea>
+  <button onclick="addNote()">Save</button>
   <div id="notes"></div>
 </div>
 
 <nav>
-  <button onclick="location.href='index.html'">Home</button>
+  <button onclick="go('index.html')">Home</button>
   <button class="active">Notes</button>
 </nav>
 
