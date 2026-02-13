@@ -5,13 +5,18 @@
 <title>Home</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>My Personal App</header>
+<script>
+if(localStorage.getItem("unlocked")!=="true"){
+  location.replace("lock.html");
+}
+</script>
+
+<header>My App</header>
 
 <div class="page">
-  <div class="menu" onclick="go('about.html')">👤 Profile</div>
+  <div class="menu" onclick="go('profile.html')">👤 Profile</div>
   <div class="menu" onclick="go('gallery.html')">🖼️ Gallery</div>
   <div class="menu" onclick="go('notes.html')">📝 Notes</div>
 </div>
@@ -23,9 +28,7 @@
 </nav>
 
 <script>
-if (!sessionStorage.getItem("unlocked")) location.replace("lock.html");
 function go(p){ location.href=p; }
 </script>
-
 </body>
 </html>
