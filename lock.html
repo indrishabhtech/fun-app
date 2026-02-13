@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>App Lock</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="center">
+
+<h2>🔐 Enter PIN</h2>
+<input type="password" id="pin" placeholder="Enter PIN">
+<button onclick="unlock()">Unlock</button>
+
+<script>
+  const SAVED_PIN = localStorage.getItem("app_pin") || "1234";
+
+  function unlock() {
+    const pin = document.getElementById("pin").value;
+    if (pin === SAVED_PIN) {
+      location.href = "index.html";
+    } else {
+      alert("Wrong PIN ❌");
+    }
+  }
+</script>
+
+</body>
+</html>
