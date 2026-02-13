@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>Profile</header>
+
+<div class="page">
+  <input id="name" placeholder="Name">
+  <input id="role" placeholder="Role">
+  <textarea id="bio" placeholder="Bio"></textarea>
+  <button onclick="saveProfile()">Save / Update</button>
+</div>
+
+<nav>
+  <button onclick="go('index.html')">Home</button>
+  <button class="active">Profile</button>
+</nav>
+
+<script src="app.js"></script>
+<script>
+function go(p){ location.href=p; }
+</script>
+</body>
+</html>
