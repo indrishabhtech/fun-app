@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Home</title>
-  <link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>My Personal APK</header>
+<header>My Personal App</header>
 
-<div class="container">
-  <div class="card" onclick="location.href='about.html'">👤 About</div>
-  <div class="card" onclick="location.href='gallery.html'">🖼️ Gallery</div>
-  <div class="card" onclick="location.href='notes.html'">📝 Notes</div>
+<div class="page">
+  <div class="menu" onclick="go('about.html')">👤 Profile</div>
+  <div class="menu" onclick="go('gallery.html')">🖼️ Gallery</div>
+  <div class="menu" onclick="go('notes.html')">📝 Notes</div>
 </div>
 
 <nav>
   <button class="active">Home</button>
-  <button onclick="location.href='gallery.html'">Gallery</button>
-  <button onclick="location.href='notes.html'">Notes</button>
+  <button onclick="go('gallery.html')">Gallery</button>
+  <button onclick="go('notes.html')">Notes</button>
 </nav>
+
+<script>
+if (!sessionStorage.getItem("unlocked")) location.replace("lock.html");
+function go(p){ location.href=p; }
+</script>
 
 </body>
 </html>
